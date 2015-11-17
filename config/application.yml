@@ -1,0 +1,58 @@
+mode:
+    development
+
+
+http:
+   port: 9400
+   disable: false
+
+thrift:
+   disable: true
+
+development:
+    datasources:
+        mysql:
+           disable: true
+        mongodb:
+           disable: true
+        redis:
+           disable: true
+    zk:
+        quorum: nj02-lbs-impala4.nj02.baidu.com
+        clientPort: 8181
+        conf_root_dir: "/waimai_search/v2/conf/cluster"
+        query_strategy_conf_root_dir: "/flume"
+
+test:
+    datasources:
+        mysql:
+           disable: true
+        mongodb:
+           disable: true
+        redis:
+           disable: true
+    zk:
+        quorum: nj02-lbs-impala4.nj02.baidu.com
+        clientPort: 8181
+
+production:
+    datasources:
+        mysql:
+           disable: true
+        mongodb:
+           disable: true
+        redis:
+            host: CSDN-DM-02
+            port: 6378
+            disable: false
+    zk:
+        quorum: nj02-lbs-impala4.nj02.baidu.com
+        clientPort: 8181
+
+application:
+    controller: com.waimai.monitor.controller
+    service:    com.waimai.monitor.service
+    document:   com.waimai.monitor.document
+    service:    com.waimai.monitor.service
+    util:       com.waimai.monitor.util
+    test:       com.waimai.monitor

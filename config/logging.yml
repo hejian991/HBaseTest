@@ -1,0 +1,37 @@
+rootLogger: DEBUG,console,file
+
+
+appender:
+  console:
+    type: console
+    threshold: DEBUG
+    layout:
+      type: consolePattern
+      conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
+
+  file:
+    type: dailyRollingFile
+    file: ${path.logs}/${cluster.name}.log
+    datePattern: "'.'yyyy-MM-dd"
+    layout:
+      type: pattern
+      conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
+
+  operateTimeLogFile:
+    type: dailyRollingFile
+    file: ${path.logs}/operateTimeLogFile.log
+    datePattern: "'.'yyyy-MM-dd"
+    layout:
+      type: pattern
+      conversionPattern: "%m%n"
+
+
+logger:
+    org.apache: ERROR,file
+    org.eclipse: INFO,console
+    prometheus: DEBUG,console,file
+    druid: INFO,console,file
+    operateTimeLog: INFO,operateTimeLogFile
+
+additivity.exposureLog: true
+

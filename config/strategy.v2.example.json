@@ -1,0 +1,722 @@
+{
+    "normal_query": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.UrlQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.MultiIndexQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.SortAndCutCompositor"
+            }
+        ]
+    },
+
+    "recommend_sim": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor",
+                "params":[{"enableCache":false,"totalFetchSize":30}]
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.UrlQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.MultiIndexQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.SortAndCutCompositor"
+            }
+        ],
+       "configParams":{"enableCache":true,"cacheTime":7257600}
+    },
+    "pro_cc": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor",
+                "params":[{"totalFetchSize":3000}]
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.UrlQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.MultiIndexQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.SortAndCutCompositor"
+            }
+        ]
+    },
+   "so_search": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.MultiIndexQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.SortCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            },
+            {
+                "name": "search.v2.strategy.RenderCompositor"
+            }
+        ],
+         "configParams":{"enableCache":false,"cacheTime":43200,"ignoreDgSort":false}
+    },
+    "production_query": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.UrlQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.MultiIndexQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.SortAndCutCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            }
+        ]
+    },
+    "search_job_by_user": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.RecommendCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor",
+                "params":[{"canBeDisable":true,"dgNoFetch":true,"configFields":"title,title_direction,title_skill,desc_skill_item","optimizeAsSingleSource":false}]
+            },
+            {
+                "name": "search.v2.strategy.JRSortCompositor"
+            },
+            {
+                "name": "search.v2.strategy.CutCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            }
+        ],
+      "configParams":{"enableCache":false,"cacheTime":43200}
+    },
+    "search_job_by_job": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.RecommendCompositor"
+            },
+            {
+                "name": "search.v2.strategy.SortAndCutCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            }
+        ],
+       "configParams":{"enableCache":true,"cacheTime":43200}
+    },
+    "search_job_by_content": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor",
+                "params":[{"enableCache":false,"totalFetchSize":30}]
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.RecommendCompositor"
+            },
+            {
+                "name": "search.v2.strategy.SortAndCutCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            }
+        ],
+        "configParams":{"enableCache":true,"cacheTime":259200}
+    },
+    "search_user_by_job": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor",
+                "params":[{"totalFetchSize":300}]
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.RecommendCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor",
+                "params":[{"canBeDisable":false,"dgNoFetch":true,"configFields":"id,usertype_skill,cur_direction,cur_skill,work_from_date,resume_skill,work_experience_str,action_skill_some_str,orgs_financing_type","optimizeAsSingleSource":false}]
+            },
+            {
+                "name": "search.v2.strategy.JRSortCompositor"
+            },
+            {
+                "name": "search.v2.strategy.RecommendFilterCompositor"
+            },
+            {
+                "name": "search.v2.strategy.CutCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            }
+        ]
+    },
+
+ "job_people_query": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.PeopleQueryCompositor2",
+                "params": [
+                    {
+                        "positionFields": "curjob,cur_job_str,resume_old_title_str,resume_skill_title_str,resume_skill_desc_str,desc,all_work_desc",
+                        "org": 30
+                    }
+                ]
+            },
+            {
+                "name": "search.v2.strategy.SortAndCutCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            }
+        ],
+        "configParams": {
+            "ignoreDgSort": true
+        }
+    },
+
+     "match_job_and_user": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.MatchCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor",
+                "params": [
+                    {
+                        "dgNoFetch": false
+                    }
+                ]
+            },
+            {
+                "name": "search.v2.strategy.JRSortCompositor"
+            }
+        ]
+    },
+    "at_user": {
+        "desc": "",
+         "strategy": "search.v2.strategy.LinearStrategy",
+         "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+         ],
+         "ref": [],
+         "compositor": [
+             {
+                 "name": "search.v2.strategy.AtUsersCompositor"
+             }
+         ]
+    },
+    "all_news": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+           {
+               "name": "search.v2.strategy.SearchProxyProcessor"
+           }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.AllNewsCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor",
+                "params": [
+                    {
+                        "dgNoFetch": true
+                    }
+                ]
+            }
+        ]
+    },
+    "job_position_query": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor",
+                "params":[{"enableCache":false}]
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.UrlQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.JobQueryCompositor4",
+                "params": [
+                    {
+                        "queryFields": "title_str"
+                    }
+                ]
+            },
+            {
+                "name": "search.v2.strategy.JobQueryCompositor3",
+                "params": [
+                    {
+                        "queryFields": "title_str",
+                        "orgFields": "org_name,org_comm_name,other_name,short_name",
+                        "enableOrgFields": true
+                    }
+                ]
+            },
+            {
+                "name": "search.v2.strategy.SortAndCutCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            }
+        ],
+        "configParams": {
+            "ignoreDgSort": true,
+            "enableCache": false
+        }
+    },
+    "get_user_revenue": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+           {
+               "name": "search.v2.strategy.SearchProxyProcessor",
+                "params":[{"blackEnable":true,"blackList":"u012365585,wangyp1230,csdnhr,programmer_editor,blogdevteam,u011098182,azurechina"}]
+           }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.UserRevenueCompositor"
+            }
+        ]
+    },
+  "hackernews_hot": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor",
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.HackSortCompositor",
+                "params": [
+                    {
+                        "queue_prefix": "HackCount"
+                    }
+                 ]
+            },
+            {
+                "name": "search.v2.strategy.SortAndCutCompositor2"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            }
+        ]
+    } ,
+  "stat": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.BiStatOverviewCompositor"
+            },
+            {
+                "name": "search.v2.strategy.ContentGatewayCompositor",
+                "params": [
+                    {
+                        "isGetRequestMethod": true,
+                        "biStatUrl": "http://cg.dm.csdn.net/bi/statistic?",
+                        "httpTimeout": 3000
+                    }
+                ]
+            }
+        ]
+    },
+    "rcommend_course_v1": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.RecommendCourseCompositor",
+                "params": [
+                    {
+                        "shortRangeArticles": 40,
+                        "shortRangeDays": 7,
+                        "tagsNum": 3,
+                    }
+                ]
+            },
+            {
+                "name": "search.v2.strategy.CourseIndexCompositor",
+                 "params": [
+                     {
+                         "scaleNum": "2:1:1",
+                         "hotUrl": "http://edu.csdn.net/api/course/hotCourses",
+                         "defHotType": "course",
+                         "hotNum": 300
+                     }
+                 ]
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            }
+        ],
+        "configParams": {
+            "enableCache": false
+        }
+    },
+    "rcommend_course_v2": {
+            "desc": "",
+            "strategy": "search.v2.strategy.LinearStrategy",
+            "processor": [
+                {
+                    "name": "search.v2.strategy.SearchProxyProcessor",
+                }
+            ],
+            "ref": [],
+            "compositor": [
+                {
+                    "name": "search.v2.strategy.course_v2.CourseTagsCompositor",
+                    "params": [
+                        {
+                            "shortRangeArticles": 40,
+                            "shortRangeDays": 7,
+                            "tagsCutNum": 10,
+                        }
+                    ]
+                },
+                {
+                    "name": "search.v2.strategy.course_v2.CourseIndexV2Compositor",
+                     "params": [
+                         {
+                             "scaleNum": "4:1",
+                             "hotUrl": "http://edu.csdn.net/api/course/hotCourses",
+                             "defHotType": "course",
+                             "hotNum": 300,
+                             "randomNum": 30
+                         }
+                     ]
+                },
+                {
+                    "name": "search.v2.strategy.DataGatewayCompositor"
+                }
+            ],
+            "configParams": {
+                "enableCache": false
+            }
+      },
+     "bid_people_query": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.BidQueryCompositor",
+                "params": [
+                    {
+                        "queryFields1": "want_job",
+                        "queryFields2": "second_level_name",
+                        "queryFields3": "second_level_name,all_work_job_title,work_d_and_s,project_d_and_s,tag,attach_message"
+                    }
+                ]
+            },
+            {
+                "name": "search.v2.strategy.CutCompositor2"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            }
+        ],
+        "configParams": {
+            "ignoreDgSort": true
+        }
+    },
+    "rcommend_course_v3": {
+            "desc": "",
+            "strategy": "search.v2.strategy.LinearStrategy",
+            "processor": [
+                {
+                    "name": "search.v2.strategy.SearchProxyProcessor"
+                }
+            ],
+            "ref": [],
+            "compositor": [
+                {
+                    "name": "search.v2.strategy.course_v3.CourseTagsCompositor_v3",
+                    "params": [
+                        {
+                            "shortRangeArticles": 40,
+                            "shortRangeDays": 14,
+                            "tagsCutNum": 10,
+                            "scaleNum": "4:1",
+                            "extendNum": 1
+                        }
+                    ]
+                },
+                {
+                    "name": "search.v2.strategy.course_v3.CourseIndexCompositor_v3",
+                     "params": [
+                         {
+                             "scaleNum": "4:1",
+                             "hotUrl": "http://edu.csdn.net/api/course/hotCourses",
+                             "defHotType": "course",
+                             "hotNum": 300,
+                             "randomNum": 30,
+                             "maxNum": 20
+                         }
+                     ]
+                }
+            ],
+            "configParams": {
+                "enableCache": false
+            }
+        },
+"rcommend_course_v4": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.course_v4.CourseTagsCompositor_v4",
+                "params": [
+                    {
+                        "shortRangeArticles": 40,
+                        "shortRangeDays": 14,
+                        "tagsCutNum": 10,
+                        "scaleNum": "4:1",
+                        "extendNum": 0
+                    }
+                ]
+            },
+            {
+                "name": "search.v2.strategy.course_v4.CourseIndexCompositor_v4",
+                 "params": [
+                     {
+                         "scaleNum": "4:1",
+                         "hotUrl": "http://edu.csdn.net/api/course/hotCourses",
+                         "dgUrl": "http://192.168.5.111:9103",
+                         "defHotType": "course",
+                         "hotNum": 300,
+                         "randomNum": 30,
+                         "maxNum": 20,
+                         "searchNum": 20,
+                         "courseCoefIds": "2015-07-01",
+                         "modelKeyWord": 0.6,
+                         "modelKeyWord1Num": 5,
+                         "modelKeyWord2Skill": 0.7,
+                         "modelKeyWord2Other": 0.3,
+                         "modelKeyWord3Title": 0.55,
+                         "modelKeyWord3Tag": 0.25,
+                         "modelKeyWord3Co": 0.1,
+                         "modelKeyWord3Body": 0.1,
+                         "modelCourseCat": 0.34,
+                         "modelCourseSuit": 0.034,
+                         "modelCourseLevel": 0.013,
+                         "modelCourseType": 0.013
+                     }
+                 ]
+            }
+        ],
+        "configParams": {
+            "enableCache": false
+        }
+    },
+    "rcommend_course": {
+        "desc": "课程推荐使用v3以及v4进行AB分流",
+        "strategy": "search.v2.strategy.ABtest.ABtestStrategy",
+        "processor": [],
+        "ref": ["rcommend_course_v3", "rcommend_course_v4"],
+        "compositor": [],
+        "configParams": {"rcommend_course_v3":0.5}
+    },
+    "bid_people_recmd": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.bid_recmd.BidClickDataCompositor",
+                "params": [
+                    {
+                        "url": "http://bid.csdn.net/batch/user/content?",
+                        "httpTimeout": 2000
+                    }
+                ]
+            },
+            {
+                "name": "search.v2.strategy.BidQueryCompositor",
+                "params": [
+                    {
+                        "queryFields1": "want_job",
+                        "queryFields2": "second_level_name",
+                        "queryFields3": "second_level_name,all_work_job_title,work_d_and_s,project_d_and_s,tag,attach_message"
+                    }
+                ]
+            },
+            {
+                "name": "search.v2.strategy.bid_recmd.BidSearchBehaviorCompositor",
+                "params": [
+                    {
+                        "url": "http://storage.dm.csdn.net/file?path="
+                    }
+                ]
+            },
+            {
+                "name": "search.v2.strategy.bid_recmd.ReRankCompositor",
+                "params": [
+                    {
+                        "queryFieldsForSearchBehavior": "want_job,second_level_name,work_d_and_s,project_d_and_s"
+                    }
+                ]
+            },
+            {
+                "name": "search.v2.strategy.CutCompositor2"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            }
+        ],
+        "configParams": {
+            "ignoreDgSort": true
+        }
+    },
+    "ask": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.AskToQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.MultiIndexQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.AskCompositor",
+                "params": [
+                    {
+                        "searchSize": 50,
+                        "recommendScore": 0.7,
+                        "finalNum": 10
+                    }
+                ]
+            }
+        ],
+        "configParams": {}
+    }
+
+}

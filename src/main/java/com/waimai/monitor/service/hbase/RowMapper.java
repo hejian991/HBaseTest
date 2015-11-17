@@ -1,4 +1,4 @@
-package hbase.extractor;
+package com.waimai.monitor.service.hbase;
 
 import org.apache.hadoop.hbase.client.Result;
 

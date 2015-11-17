@@ -1,7 +1,7 @@
 //import static org.junit.Assert.assertEquals;
 //
-//import org.apache.hadoop.hbase.client.Put;
-//import org.apache.hadoop.hbase.util.Bytes;
+//import org.apache.hadoop.waimai.da.hbase.client.Put;
+//import org.apache.hadoop.waimai.da.hbase.com.waimai.monitor.util.Bytes;
 //import org.junit.Test;
 //
 //

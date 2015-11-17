@@ -1,4 +1,4 @@
-package hbase;
+package com.waimai.monitor.service.hbase;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -7,7 +7,6 @@ import net.csdn.common.logging.Loggers;
 import net.csdn.common.settings.Settings;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.client.HTable;
 import org.apache.hadoop.hbase.client.HTableInterface;
 import org.apache.hadoop.hbase.client.HTablePool;
 
@@ -27,8 +26,8 @@ public class HTableManager {
       return;
     }
     Configuration config = HBaseConfiguration.create();
-    config.set("hbase.zookeeper.quorum", "nj02-lbs-impala4.nj02.baidu.com");
-    config.set("hbase.zookeeper.property.clientPort", "8181");
+    config.set("hbase.zookeeper.quorum", settings.get("zk.quorum", "nj02-lbs-impala4.nj02.baidu.com"));
+    config.set("hbase.zookeeper.property.clientPort", settings.get("zk.clientPort", "8181"));
 
 
     hTablePool = new HTablePool(config, settings.getAsInt("hbase.pool_size", HTABLE_POOL_SIZE));

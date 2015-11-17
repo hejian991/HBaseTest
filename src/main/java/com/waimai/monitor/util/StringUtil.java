@@ -1,4 +1,4 @@
-package util;
+package com.waimai.monitor.util;
 
 import com.google.common.base.Joiner;
 

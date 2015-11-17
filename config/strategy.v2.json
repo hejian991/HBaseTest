@@ -1,0 +1,117 @@
+{
+    "normal_query": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.UrlQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.MultiIndexQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.SortAndCutCompositor"
+            }
+        ]
+    },
+    "test_normal_query": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.MockSearchProxyProcessor"
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.MultiIndexQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.SortAndCutCompositor"
+            }
+        ]
+    },
+    "production_query": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [
+            {
+                "name": "search.v2.strategy.SearchProxyProcessor",
+                "params":[
+                    {
+                        "queryTimeout": 6000
+                    }
+                ]
+            }
+        ],
+        "ref": [],
+        "compositor": [
+            /*{
+             "name": "search.v2.strategy.SqlQueryCompositor"
+             },*/
+            {
+                "name": "search.v2.strategy.UrlQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.MultiIndexQueryCompositor"
+            },
+            {
+                "name": "search.v2.strategy.SortAndCutCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor"
+            }
+        ]
+    },
+    "match_job_and_user": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.MatchCompositor"
+            },
+            {
+                "name": "search.v2.strategy.DataGatewayCompositor",
+                "params": [
+                    {
+                        "dgNoFetch": false
+                    }
+                ]
+            },
+            {
+                "name": "search.v2.strategy.JRSortCompositor"
+            }
+        ]
+    },
+    "stat": {
+        "desc": "",
+        "strategy": "search.v2.strategy.LinearStrategy",
+        "processor": [],
+        "ref": [],
+        "compositor": [
+            {
+                "name": "search.v2.strategy.BiStatOverviewCompositor"
+            },
+            {
+                "name": "search.v2.strategy.ContentGatewayCompositor",
+                "params": [
+                    {
+                        "isGetRequestMethod": true,
+                        "biStatUrl": "http://cg.dm.csdn.net/bi/statistic?",
+                        "httpTimeout": 3000
+                    }
+                ]
+            }
+        ],
+        "configParams":{"enableCache":false}
+    }
+}

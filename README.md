@@ -1,4 +1,5 @@
-HBaseTest
+Monitor Master
 =========
 
-Quick overview of testing Apache HBase applications
+
+Monitor Master restful server.

@@ -24,3 +24,5 @@ nb-configuration.xml
 /release_dev
 /conf-product-bak/*
 /apache-flume-*
+/release_dev
+/logs

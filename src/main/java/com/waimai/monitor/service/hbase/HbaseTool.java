@@ -1,19 +1,14 @@
-package hbase;
+package com.waimai.monitor.service.hbase;
 
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import hbase.extractor.ResultsExtractor;
-import hbase.extractor.RowMapper;
-import hbase.extractor.RowMapperResultsExtractor;
 import net.csdn.common.settings.ImmutableSettings;
 import net.csdn.common.settings.Settings;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.HBaseConfiguration;
-import util.StringUtil;
 import org.apache.hadoop.hbase.KeyValue;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
+import com.waimai.monitor.util.StringUtil;
 
 import java.io.IOException;
 import java.util.*;
