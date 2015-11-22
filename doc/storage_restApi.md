@@ -159,3 +159,31 @@ ref url: http://developer.51cto.com/art/201510/493422.htm
 	        }
 	    ]
 	}
+	
+	
+前端定制单份机器为维度的json数据结构
+host = {
+	name: '',  // 机器名称
+	cCountSum: 0,  // 当前总行数
+	cSizeSum: 0,  // 当前总大小
+	cLogSum: 0,  // 当前日志总份数
+	logs: [log1,log2,...],  // 标志在该host下的以单份日志为维度的信息
+	times: [time1, time2,...],  // 标志在该host下的以单个时间为维度的信息
+};
+
+log = {
+	name: '',  // 日志名称
+	countSum: 0,  // 日志总行数
+	sizeSum: 0,  // 日志总大小
+	cCount: 0,  // 日志当前行数
+	cSize: 0,  // 日志当前大小
+	startTime: '',  // 日志开始时间
+	endTime: '',  // 日志结束时间
+};
+
+time = {
+	time: '', // 当前时间
+	logSum: '',  // 日志总份数
+	countSum: 0,  // 日志总行数
+	sizeSum: 0,  // 日志总大小
+};
